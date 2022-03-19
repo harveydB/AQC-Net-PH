@@ -1,4 +1,4 @@
-import requests
+import requests    #requests is not a built-in module for python. You will have to install it by using "pip install requests" in your command terminal provided you have pyhton and pip isntalled
 import json
 
 URL = "http://api.airvisual.com/v2"
