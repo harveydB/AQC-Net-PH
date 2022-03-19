@@ -1,4 +1,4 @@
-import requests    #requests is not a built-in module for python. You will have to install it by using "pip install requests" in your command terminal provided you have pyhton and pip isntalled
+import requests    #requests is not a built-in module for python. You will have to install it by using "pip install requests" 
 import json
 
 URL = "http://api.airvisual.com/v2"
@@ -8,7 +8,7 @@ State = 'NCR'
 Country = 'Philippines'
 APIKEY = '75735f79-9de0-4104-a595-e555e240f4c9'
 
-queryURL = URL + '/city?city=' + City + '&state=' + State + '&country=' + Country + '&key=' +APIKEY
+queryURL = URL + '/city?city=' + City + '&state=' + State + '&country=' + Country + '&key=' + APIKEY
 
 def getAQI():
     response = requests.get(queryURL)
