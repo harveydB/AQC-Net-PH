@@ -15,4 +15,4 @@ def getAQI():
     userdata = json.loads(response.text)
     return userdata.get('data').get('current').get('pollution').get('aqius')
 
-print(getAQI())
+print("AQI Value: " + str(getAQI()))
