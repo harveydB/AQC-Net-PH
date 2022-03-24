@@ -17,6 +17,9 @@
 #define SERIAL_DEBUG_BAUD   115200
 float p10,p25,totalp10,totalp25,BP_hi,BP_lo,I_hi,I_lo;
 int error,i,counter,Ip;
+unsigned Hour = 0;
+unsigned Minute = 0;
+unsigned long TimeOfLastMinute = 0;
 SDS011 my_sds;
 
 // Initialize ThingsBoard client
@@ -54,20 +57,22 @@ void loop() {
   }
   totalp10 = 0;
   totalp25 = 0;
+
   i = 1;
-  while(i <= 1){
+  while(i <= 60){
       error = my_sds.read(&p25,&p10);
       if (! error) {
         totalp10 = totalp10 + p10;
         totalp25 = totalp25 + p25;
         Serial.println("Recording: " + String(i)+"th element");
+        delay(1000);
         i = i + 1;
       }
       
       delay(100);
   }
-  totalp10 = totalp10 / 30;
-  totalp25 = totalp25/ 30;
+  totalp10 = totalp10 / 60;
+  totalp25 = totalp25/ 60;
   Serial.println("PM2.5: "+ String(totalp25));
   Serial.println("PM10: "+ String(totalp10));
 
