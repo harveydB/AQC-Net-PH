@@ -38,7 +38,7 @@ void setup() {
 }
 
 void loop() {
-  delay(1000);
+  //delay(1000);
 
   if (WiFi.status() != WL_CONNECTED) {
     reconnect();
@@ -59,20 +59,19 @@ void loop() {
   totalp25 = 0;
 
   i = 1;
-  while(i <= 60){
+  while(i <= 1){
       error = my_sds.read(&p25,&p10);
       if (! error) {
         totalp10 = totalp10 + p10;
         totalp25 = totalp25 + p25;
         Serial.println("Recording: " + String(i)+"th element");
-        delay(1000);
+        
         i = i + 1;
       }
       
-      delay(100);
+      //delay(100);
   }
-  totalp10 = totalp10 / 60;
-  totalp25 = totalp25/ 60;
+
   Serial.println("PM2.5: "+ String(totalp25));
   Serial.println("PM10: "+ String(totalp10));
 
@@ -84,6 +83,7 @@ void loop() {
 
   tb.sendTelemetryFloat("PM10 30-sec", totalp10);
   tb.sendTelemetryFloat("PM2.5 30-sec", totalp25);
+  delay(60000);
   tb.loop();
 }
 
