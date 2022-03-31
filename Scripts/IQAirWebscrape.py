@@ -18,7 +18,7 @@ while ctr<17:
     textdata = re.sub('[^a-zA-Z0-9 \n\.]', ' ', textdata)
     pm_value = float(textdata.split()[2])
     pm_array.append(pm_value)
-    time.sleep(1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    time.sleep(1800)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
     ctr+=1
 
 columns = ['IQAir PM Value'] 
