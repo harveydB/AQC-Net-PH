@@ -2,16 +2,10 @@ from cgitb import text
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import time
+import re 
+import csv
 
-<<<<<<< Updated upstream
-queryURL = 'https://www.iqair.com/philippines/ncr/caloocan'
-page = requests.get(queryURL)
-soup = BeautifulSoup(page.text, "lxml")
-results = soup.find(class_="aqi-overview-detail__other-pollution-table")
-textdata = results.text
-pm_value = float(textdata.split()[2])
-print(pm_value)
-=======
 
 def get_PM(queryURL):
     pm_array = []
@@ -31,7 +25,6 @@ def get_PM(queryURL):
 
 def write_PM(filename,pm_array):
     columns = ['IQAir PM Value'] 
->>>>>>> Stashed changes
 
     with open(filename, 'w', encoding='UTF8', newline='') as f:
         writer = csv.writer(f)
