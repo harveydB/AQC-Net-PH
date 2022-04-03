@@ -5,8 +5,8 @@
 
 
 
-#define WIFI_AP             "04FA_d0a168" //wifi ssid
-#define WIFI_PASSWORD       "keyboard4life" //wifi password
+#define WIFI_AP             "GlobeAtHome_E1B42" //wifi ssid
+#define WIFI_PASSWORD       "4D9FAEC1" //wifi password
 
 // See https://thingsboard.io/docs/getting-started-guides/helloworld/
 // to understand how to obtain an access token
@@ -81,8 +81,8 @@ void loop() {
   // See https://thingsboard.io/docs/reference/mqtt-api/#telemetry-upload-api
   // for more details
 
-  tb.sendTelemetryFloat("PM10 30-sec", totalp10);
-  tb.sendTelemetryFloat("PM2.5 30-sec", totalp25);
+  tb.sendTelemetryFloat("PM10 1-min", totalp10);
+  tb.sendTelemetryFloat("PM2.5 1-min", totalp25);
   delay(60000);
   tb.loop();
 }
