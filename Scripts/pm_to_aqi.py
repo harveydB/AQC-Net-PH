@@ -11,6 +11,9 @@ def get_aqi(pm10,pm25):
     pm25_bplo_list = [0,12.1,35.5,55.5,150.5,250.5,350.5]
     aqi_bphi_list = [50,100,150,200,300,400,500]
     aqi_bplo_list = [0,51,101,151,201,301,401]
+    aqi_intervals = ["0-10","11-20","21-30","31-40","41-50","51-60","61-70","71-80","81-90","91-100"]
+    intervals_hi = list(range(10,101,10))
+    intervals_lo = list(range(0,100,10))
     for i in range(7):
         if pm10 < pm10_bphi_list[i] and pm10 > pm10_bplo_list[i]:
             pm10_bphi =  pm10_bphi_list[i]
@@ -32,16 +35,23 @@ def get_aqi(pm10,pm25):
         main_pollutant = "PM2.5"
         calculated_aqi = pm25_aqi
     for i in range(7):
-        print(calculated_aqi)
+        #print(calculated_aqi)
         if calculated_aqi < aqi_bphi_list[i] and calculated_aqi > aqi_bplo_list[i]:
             label = i
-            print(label)
+            #print(label)
             break
-    return label,main_pollutant,calculated_aqi
+    for i in range(10):
+        if calculated_aqi < intervals_hi[i] and calculated_aqi > intervals_lo[i]:
+            interval = aqi_intervals[i]
+            break
+
+
+
+    return interval,label,main_pollutant,calculated_aqi
     
             
-date = "05-13"
-location = "UP"
+date = "03-31"
+location = "Caloocan"
 new_file = date + "_" + location + "_AQI"
 proc_dir  = 'D:/Github/EEE-199/PM_Data/Processed_Data/'
 date_dir = proc_dir + date + "/"
@@ -51,7 +61,8 @@ df["Calibrated PM2.5"] = df["PM2.5"] * 0.88
 df["Main Pollutant"] = ""
 df["AQI"] = 0
 df["AQI Label"] = 99
+df["Interval"] = ""
 
 for i in range(len(df.index)):
-    df["AQI Label"][i],df["Main Pollutant"][i],df["AQI"][i] = get_aqi(df.iloc[i]["PM10"],df.iloc[i]["PM2.5"])
+    df["Interval"][i],df["AQI Label"][i],df["Main Pollutant"][i],df["AQI"][i] = get_aqi(df.iloc[i]["PM10"],df.iloc[i]["PM2.5"])
 print(df)

@@ -37,10 +37,10 @@ def move_time(start_time,min_to_move):
 
 
 
-def clean_data(date,loc,start_time = "08:00",raw_dir = "D:/GitHub/EEE-199/PM_Data/Raw_Data/",proc_dir = 'D:/Github/EEE-199/PM_Data/Processed_Data/', pic_dir = "D:/Github/EEE-199/Pictures/"):
+def clean_data(interval,date,loc,start_time = "08:00",raw_dir = "D:/GitHub/EEE-199/PM_Data/Raw_Data/",proc_dir = 'D:/Github/EEE-199/PM_Data/Processed_Data/', pic_dir = "D:/Github/EEE-199/Pictures/"):
     #import data
     file_name = date+"_"+loc
-    df = pd.read_csv(raw_dir+date+"/"+ file_name + ".csv")
+    df = pd.read_csv(raw_dir+file_name + ".csv")
     #clean data
     column_names = df.columns.str.split(";")[0]
     df.columns = [column_names[0]]
@@ -82,7 +82,7 @@ def clean_data(date,loc,start_time = "08:00",raw_dir = "D:/GitHub/EEE-199/PM_Dat
         #set stop index
         stop_index = start_index + 1
         #move start time
-        start_time = move_time(start_time,10)
+        start_time = move_time(start_time,interval)
 
     image_names = image_organizer.get_image_data(pic_dir+date)
     print("PM10", ave_pm10_list)
