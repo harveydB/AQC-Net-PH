@@ -1,10 +1,14 @@
 
+#include <HTTPClient.h>
 #include <WiFi.h>
 #include "ThingsBoard.h"
 #include <SDS011.h>
 
 
-
+// "GlobeAtHome_E1B42" //wifi ssid
+//"4D9FAEC1" //wifi password
+// "04FA_d0a168" //wifi ssid
+// "keyboard4life" //wifi password
 #define WIFI_AP             "GlobeAtHome_E1B42" //wifi ssid
 #define WIFI_PASSWORD       "4D9FAEC1" //wifi password
 
@@ -21,7 +25,7 @@ unsigned Hour = 0;
 unsigned Minute = 0;
 unsigned long TimeOfLastMinute = 0;
 SDS011 my_sds;
-
+HTTPClient httpClient;
 // Initialize ThingsBoard client
 WiFiClient espClient;
 // Initialize ThingsBoard instance
@@ -62,7 +66,7 @@ void loop() {
   while(i <= 1){
       error = my_sds.read(&p25,&p10);
       if (! error) {
-        totalp10 = totalp10 + p10;
+        totalp10 = totalp10 + p10; 
         totalp25 = totalp25 + p25;
         Serial.println("Recording: " + String(i)+"th element");
         
@@ -83,7 +87,7 @@ void loop() {
 
   tb.sendTelemetryFloat("PM10 1-min", totalp10);
   tb.sendTelemetryFloat("PM2.5 1-min", totalp25);
-  delay(60000);
+  delay(30000);
   tb.loop();
 }
 
