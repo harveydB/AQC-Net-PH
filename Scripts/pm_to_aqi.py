@@ -1,5 +1,5 @@
 import pandas as pd
-
+pd.options.mode.chained_assignment = None  # default='warn'
 def calc_aqi(pm,bp_hi,bp_lo,i_hi,i_lo):
     aqi = ((i_hi - i_lo) / (bp_hi-bp_lo)) * (pm - bp_lo) + i_lo
     return aqi
@@ -25,8 +25,14 @@ def get_aqi(pm10,pm25):
             pm25_bplo =  pm25_bplo_list[i]
             pm25_aqi_bphi = aqi_bphi_list[i]
             pm25_aqi_bplo = aqi_bplo_list[i]
-    pm10_aqi = calc_aqi(pm10,pm10_bphi,pm10_bplo,pm10_aqi_bphi,pm10_aqi_bplo)
-    pm25_aqi = calc_aqi(pm25,pm25_bphi,pm25_bplo,pm25_aqi_bphi,pm25_aqi_bplo)
+    try:
+        pm10_aqi = calc_aqi(pm10,pm10_bphi,pm10_bplo,pm10_aqi_bphi,pm10_aqi_bplo)
+    except:
+        pm10_aqi = 0
+    try:
+        pm25_aqi = calc_aqi(pm25,pm25_bphi,pm25_bplo,pm25_aqi_bphi,pm25_aqi_bplo)
+    except:
+        pm25_aqi = 0
 
     if pm10_aqi > pm25_aqi:
         main_pollutant = "PM10"
@@ -48,7 +54,9 @@ def get_aqi(pm10,pm25):
 
 
     return interval,label,main_pollutant,calculated_aqi
-    
+
+def linear_reg_calib(x):
+    return x + (-0.14761837331894911 * x + 5.4708166982901485)
             
 date = "03-31"
 location = "Caloocan"
@@ -56,13 +64,18 @@ new_file = date + "_" + location + "_AQI"
 proc_dir  = 'D:/Github/EEE-199/PM_Data/Processed_Data/'
 date_dir = proc_dir + date + "/"
 df = pd.read_csv(date_dir+date+"_"+location+"_P.csv")
-df["Calibrated PM10"] = df["PM10"] * 0.88
-df["Calibrated PM2.5"] = df["PM2.5"] * 0.88
+df["Elevation Calibrated PM10"] = df["PM10"] * 0.88
+df["Elevation Calibrated PM2.5"] = df["PM2.5"] * 0.88
 df["Main Pollutant"] = ""
 df["AQI"] = 0
 df["AQI Label"] = 99
 df["Interval"] = ""
+df["Calibrated Interval"] = ""
+df["IQ Air Calibrated"] = df["Elevation Calibrated PM2.5"].apply(linear_reg_calib)
+df["Calibrated AQI"] = 0 
 
 for i in range(len(df.index)):
     df["Interval"][i],df["AQI Label"][i],df["Main Pollutant"][i],df["AQI"][i] = get_aqi(df.iloc[i]["PM10"],df.iloc[i]["PM2.5"])
-print(df)
+for i in range(len(df.index)):
+    df["Calibrated Interval"][i],df["AQI Label"][i],df["Main Pollutant"][i],df["Calibrated AQI"][i] = get_aqi(df.iloc[i]["PM10"],df.iloc[i]["IQ Air Calibrated"])
+print(df[["Image name","PM2.5","IQ Air Calibrated","AQI","Interval","Calibrated AQI","Calibrated Interval"]])
