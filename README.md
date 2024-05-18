@@ -1,6 +1,7 @@
 # AQC Net PH
 
-Undergraduate Thesis
+This utilizes image-based air quality monitoring through deep learning using low-cost particulate matter sensors
+
 
 ## Dependencies
 Running the following command will install the prerequesites needed
