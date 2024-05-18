@@ -2,7 +2,9 @@
 
 This project utilizes image-based air quality monitoring through deep learning using low-cost particulate matter sensors. 
 
-This model uses a deep convolutional neural network model AQC-Net based on ResNet in addition to the addition of the self supervision model SCA that estimates air pollution by using both PM2.5 and PM10 concentration levels. 
+___________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+The training model for this project uses a deep convolutional neural network model AQC-Net based on ResNet in addition to the addition of the self supervision model SCA that estimates air pollution by using both PM2.5 and PM10 concentration levels. 
 
 ![image](https://github.com/harveydB/AQC-Net-PH/assets/80321695/ea242e04-d3c6-43b2-9767-533a3db6f8d3)
 
