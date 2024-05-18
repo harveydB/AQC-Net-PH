@@ -13,6 +13,9 @@ This model uses a deep convolutional neural network model AQC-Net based on ResNe
 
 ![image](https://github.com/harveydB/AQC-Net-PH/assets/80321695/ea242e04-d3c6-43b2-9767-533a3db6f8d3)
 
+![image](https://github.com/harveydB/AQC-Net-PH/assets/80321695/e42c497b-2d58-4166-a2b4-28719934631e)
+
+
 
 ```
 title: AQC Net PH Space
