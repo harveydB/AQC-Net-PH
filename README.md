@@ -1,8 +1,13 @@
-##AQC Net PH
+#AQC Net PH
 
 Undergraduate Thesis
 
+## Dependencies
+Running the following command will install the prerequesites needed
 
+```
+pip install -r requirements.txt
+```
 
 ---
 title: AQC Net PH Space
