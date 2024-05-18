@@ -24,6 +24,9 @@ ________________________________________________________________________________
 
 The training model for this project uses a deep convolutional neural network model AQC-Net based on ResNet in addition to the addition of the self supervision model SCA that estimates air pollution by using both PM2.5 and PM10 concentration levels. 
 
+The training set for this model is {(xi, yi)}i=1N , xi ∈ RW xHxC, yi ∈ N. Where {xi}i=1N is the air quality image set acquired and {yi}i=1N is the air quality index label calculated from the PM2.5 and PM10 values. The AQC-Net model implements a self-supervision module called ”Spatial and Context Attention Block (SCA)” which is added to the original ResNet18 network structure for feature extraction of the air quality images.
+
+
 ![image](https://github.com/harveydB/AQC-Net-PH/assets/80321695/ea242e04-d3c6-43b2-9767-533a3db6f8d3)
 
 The Spatial and Context Attention Block (SCA) created by Zhang et al.(2020)  is introduced at the 3rd Block in the ResNet18 network structure. The SCA module is used to recalibrate the feature mapping of the channels and its basic structure is composed of two parts
