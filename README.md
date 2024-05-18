@@ -14,11 +14,12 @@ pip install -r requirements.txt
 ___________________________________________________________________________________________________________________________________________________________________________________________________________________
 ![image](https://github.com/harveydB/AQC-Net-PH/assets/80321695/bb47e59d-abdb-4b13-815e-76a2ecfcaf31)
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Try using this application at https://huggingface.co/spaces/jervinjosh68/AQC-Net-PH-space
 
 Check out the configuration reference at https://huggingface.co/docs/hub/spaces#reference
+
+___________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 The training model for this project uses a deep convolutional neural network model AQC-Net based on ResNet in addition to the addition of the self supervision model SCA that estimates air pollution by using both PM2.5 and PM10 concentration levels. 
 
