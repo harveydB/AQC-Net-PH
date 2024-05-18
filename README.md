@@ -20,6 +20,7 @@ Try using this application at https://huggingface.co/spaces/jervinjosh68/AQC-Net
 Check out the configuration reference at https://huggingface.co/docs/hub/spaces#reference
 
 ___________________________________________________________________________________________________________________________________________________________________________________________________________________
+## Deep Learning Methods
 
 The training model for this project uses a deep convolutional neural network model AQC-Net based on ResNet in addition to the addition of the self supervision model SCA that estimates air pollution by using both PM2.5 and PM10 concentration levels. 
 
