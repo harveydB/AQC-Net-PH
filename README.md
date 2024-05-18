@@ -5,15 +5,14 @@ This project utilizes image-based air quality monitoring through deep learning u
 ## Dependencies
 Running the following command will install the prerequesites needed
 
+```
+pip install -r requirements.txt
+```
+
 This model uses a deep convolutional neural network model AQC-Net based on ResNet in addition to the addition of the self supervision model SCA that estimates air pollution by using both PM2.5 and PM10 concentration levels. 
 
 ![image](https://github.com/harveydB/AQC-Net-PH/assets/80321695/ea242e04-d3c6-43b2-9767-533a3db6f8d3)
 
-
-
-```
-pip install -r requirements.txt
-```
 
 ```
 title: AQC Net PH Space
