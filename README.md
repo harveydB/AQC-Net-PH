@@ -10,7 +10,7 @@ Running the following command will install the prerequesites needed
 pip install -r requirements.txt
 ```
 
----
+```
 **title: AQC Net PH Space
 emoji: ⚡
 colorFrom: green
@@ -19,6 +19,7 @@ sdk: gradio
 sdk_version: 2.9.4
 app_file: app.py
 pinned: false
+```
 license: apache-2.0**
 ---
 
