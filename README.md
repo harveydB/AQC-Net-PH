@@ -26,6 +26,7 @@ The training model for this project uses a deep convolutional neural network mod
 
 The training set for this model is {(xi, yi)}i=1N , xi ∈ RW xHxC, yi ∈ N. Where {xi}i=1N is the air quality image set acquired and {yi}i=1N is the air quality index label calculated from the PM2.5 and PM10 values. The AQC-Net model implements a self-supervision module called ”Spatial and Context Attention Block (SCA)” which is added to the original ResNet18 network structure for feature extraction of the air quality images.
 
+The output of the first branch is then matrix-multiplied to the output of the second branch to acquire the similarity between different channel maps. The result from this is then matrix multiplied to the feature map produced by the third branch to redistribute relevant feature information to the original feature map and to acquire the correlation between the whole feature map. To obtain the final output results, the feature map is aggregated using global average pooling and matrix-multiplied by the original input feature map.
 
 ![image](https://github.com/harveydB/AQC-Net-PH/assets/80321695/ea242e04-d3c6-43b2-9767-533a3db6f8d3)
 
